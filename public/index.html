@@ -1,49 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="MeanBlogApp">
+<html lang="en" ng-app="WebAppMaker">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="initial-scale=1.25, user-scalable=no">
+	<title>WAM</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 	
+	<link rel="stylesheet" href="../css/style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+	<script src="app.js"></script>
+	<script src="config.js"></script>
+	<script src="views/user/login.controller.client.js"></script>
+	<script src="views/user/profile.controller.client.js"></script>
+	<script src="services/user.service.client.js"></script>
+	<script src="views/website/website-list.controller.client.js"></script>	
+	<script src="services/website.service.client.js"></script>
+	<script src="views/website/website-new.controller.client.js"></script>		
 </head>
 <body>
-	<div ng-controller="BlogController" class="container">
-		<h1>MEAN Blog</h1>
+	<div ng-view> 
 		
-		<input ng-model="title" class="form-control" style="margin-bottom:5px;"/>
-		<textarea ng-model="body" class="form-control" style="margin-bottom:5px;"></textarea>
-		<button ng-click="createPost(title,body)" class="btn btn-primary btn-block">Add Post</button>
-		
-		<div ng-repeat="post in posts">
-			<h2>{{post.title}}</h2>
-			<span ng-click="removePost(post._id)" class="glyphicon glyphicon-trash pull-right"></span>
-			<p>{{post.body}}</p>
-		</div>
 	</div>
-	
-	
-	<script>
-		angular.module("MeanBlogApp",[]).controller("BlogController", BlogController);
-		
-		function BlogController($scope,$http){
-			
-			$http.get("/api/post").then(setAllPosts);	
-			
-			function setAllPosts(response){
-			console.log(response);
-			$scope.posts=response.data;
-			}		
-			
-			$scope.removePost=function(id){
-			$http.delete("/api/post/"+id).then(setAllPosts);
-			}
-			
-			$scope.createPost= function(title,body) {
-				var newPost = {title:title,body:body};
-				$http.post("/api/post",newPost).then(setAllPosts);
-			}
-		}
-	</script>
 
 </body>
 </html>

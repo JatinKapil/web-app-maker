@@ -1,14 +1,32 @@
 {
+  "ecmaVersion": 5,
   "plugins": {
     "outline": {
       
     },
+    "guess-types": {
+      
+    },
     "node": {
+      
+    },
+    "angular": {
+      
+    },
+    "node-express": {
+      
+    },
+    "node-mongoose": {
+      
+    },
+    "bootstrap": {
       
     }
   },
   "libs": [
     "ecma5",
-    "ecma6"
+    "ecma6",
+    "browser",
+    "jquery"
   ]
 }
