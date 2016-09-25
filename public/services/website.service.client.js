@@ -15,7 +15,8 @@
 	function WebsiteService() {
 		var api = {
 				findWebsitesForUserId : findWebsitesForUserId,
-				createWebsite : createWebsite
+				createWebsite : createWebsite,
+				deleteWebsite : deleteWebsite
 		};
 		return api;
 		
@@ -37,6 +38,15 @@
 			};
 			websites.push(newWebsite);
 			return newWebsite;
+		}
+        function deleteWebsite(websiteId) {
+			for(var i in websites){
+				if(websites[i]._id===websiteId){
+					websites.splice(i,1);
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 })();

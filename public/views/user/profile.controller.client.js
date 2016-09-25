@@ -2,10 +2,10 @@
 	angular.module("WebAppMaker")
 	.controller("ProfileController", ProfileController);
 		
-	function ProfileController($routeParams, UserService) {
+	function ProfileController($routeParams, UserService, $location) {
 		var vm = this;
-	//	vm.updateUser = updateUser;		
-	//	var index = -1;
+		vm.updateUser = updateUser;		
+	
 		var id = $routeParams.id;
 		function init() {
 			vm.user = UserService.findUserById(id);
@@ -13,7 +13,7 @@
 		init();
 		
 		function updateUser(newUser) {
-			UserService.updateUser(id, newUser);
+			var result = UserService.updateUser(id, newUser);
 		}
 	}
 })();

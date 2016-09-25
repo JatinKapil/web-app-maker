@@ -20,8 +20,16 @@
 		};
 		return api;
 		
-		function createUser(newUser) {
-			
+		function createUser(username, password) {
+			var newUser =  {
+					_id: (new Date()).getTime()+"",
+					username : username,
+					password : password,
+					firstName : "",
+					lastName : ""
+			}
+			users.push(newUser);
+			return newUser;
 		}
 		
 		function deleteUser() {
@@ -52,6 +60,7 @@
 					return true;
 				}
 			}
+			return false;
 		}
 	}
 })();

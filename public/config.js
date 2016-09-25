@@ -14,7 +14,9 @@
 				controllerAs: "model"
 		})
 		.when("/register",{
-			templateUrl: "views/user/register.view.client.html"
+			templateUrl: "views/user/register.view.client.html",
+			controller: "RegisterController",
+			controllerAs: "model"
 		})
 		.when("/user/:id",{
 			templateUrl: "views/user/profile.view.client.html",
@@ -31,10 +33,10 @@
 			controller: "NewWebsiteController",
 			controllerAs: "model"
 		})
-		.when("/user/:uid/website/:wid",{
+		.when("/user/:userId/website/:websiteId",{
 			templateUrl: "views/website/website-edit.view.client.html",
-//			controller: "WebsiteListController",
-//			controllerAs: "model"
+			controller: "EditWebsiteController",
+			controllerAs: "model"
 		})
 		.otherwise({
 			redirectTo: "/login"
