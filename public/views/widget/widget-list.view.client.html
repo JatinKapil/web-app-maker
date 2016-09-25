@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="ISO-8859-1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="viewport" content="initial-scale=1.25, user-scalable=no">	
-	<title>Title</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 	
-	<link rel="stylesheet" href="../css/style.css"/>
-</head>
-<body>
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -31,16 +19,38 @@
 	    </div>
 	  </div>
 	</nav>
-	<div class="container">		
-		<div class="jga-widget">
+	<div class="container">
+		<div ng-repeat="widget in model.widgets" class="jga-widget">
 			<div class="jga-widget-tool">
 				<a href="#">
 			  		<span class="glyphicon glyphicon-cog"></span>
 			  	</a>
 			  	<span class="glyphicon glyphicon-align-justify"></span>
 			</div>
-			<h1>Gizmodo</h1>
+			<div ng-switch="widget.widgetType">
+				<div ng-switch-when="HEADER" ng-switch="{{widget.size}}">
+					<h1 ng-switch-when="1">{{widget.text}}</h1>
+					<h2 ng-switch-when="2">{{widget.text}}</h2>
+					<h3 ng-switch-when="3">{{widget.text}}</h3>
+					<h4 ng-switch-when="4">{{widget.text}}</h4>
+					<h5 ng-switch-when="5">{{widget.text}}</h5>
+					<h6 ng-switch-when="6">{{widget.text}}</h6>
+				</div>
+				<div ng-switch-when="HTML">
+					<div ng-bind-html="model.getSafeHtml(widget)"></div>
+				</div>
+				<div ng-switch-when="IMAGE">
+					<img width="{{widget.width}}" ng-src="{{widget.url}}"/>
+				</div>
+				<div ng-switch-when="YOUTUBE">
+					<iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div ng-switch-default>
+					Unable to render widget
+				</div>				
+			</div>
 		</div>
+		
 		<div class="jga-widget">
 			<div class="jga-widget-tool">
 				<a href="#">
@@ -72,15 +82,7 @@
 			The two had worked on the system together but stopped the partnership in July.
 			</p>
 		</div>
-		<div class="jga-widget">
-			<div class="jga-widget-tool">
-				<a href="#">
-			  		<span class="glyphicon glyphicon-cog"></span>
-			  	</a>
-			  	<span class="glyphicon glyphicon-align-justify"></span>
-			</div>
-			<iframe width="100%" src="https://www.youtube.com/embed/Sn_g80FXA-0" frameborder="0" allowfullscreen></iframe>
-		</div>
+		
 		<nav class="navbar navbar-default navbar-fixed-bottom">
 		  <div class="container">
 		    <div class="row navbar-text">
@@ -99,5 +101,4 @@
 		  </div>
 		</nav>  
 	</div>
-</body>
-</html>
+
