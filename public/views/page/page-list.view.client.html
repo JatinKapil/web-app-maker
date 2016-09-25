@@ -1,25 +1,30 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
 	    <div class="navbar-header">
+	      <p class="navbar-text pull-left">
+	        <a href="#/user/{{model.userId}}/website" class="navbar-link">
+	          <span class="glyphicon glyphicon-chevron-left">
+	          </span>
+	        </a>
+	      </p>
 	      <a class="navbar-brand" href="#">
-	        Websites        
+	        Pages        
 	      </a>
 	      <p class="navbar-text pull-right">
-	        <a href="#/user/{{model.userId}}/website/new" class="navbar-link">
+	        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
 	          <span class="glyphicon glyphicon-plus">
 	          </span>
 	        </a>
 	      </p>
 	    </div>
 	  </div>
-</nav>	
+	</nav>
 	<div class="container">
 		<ul class="list-group">
-		  <li ng-repeat="website in model.websites" class="list-group-item">
-		  	<a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
-		  		{{website.name}}
+		  <li ng-repeat="page in model.pages" class="list-group-item">
+		  	<a href="../widget/widget-list.html">{{page.name}}
 		  	</a>
-		  	<a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+		  	<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
 		  		<span class="glyphicon glyphicon-cog"></span>
 		  	</a>
 		  </li>
@@ -43,3 +48,4 @@
 		  </div>
 		</nav>  
 	</div>
+
