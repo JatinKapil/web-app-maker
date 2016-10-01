@@ -2,7 +2,7 @@
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 	      <p class="navbar-text pull-left">
-	        <a href="../page/page-list.html" class="navbar-link">
+	        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page" class="navbar-link">
 	          <span class="glyphicon glyphicon-chevron-left">
 	          </span>
 	        </a>
@@ -11,7 +11,7 @@
 	        Widgets        
 	      </a>
 	      <p class="navbar-text pull-right">
-	        <a href="widget-chooser.html" class="navbar-link">
+	        <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
 	          <span class="glyphicon glyphicon-plus">
 	          </span>
 	        </a>
@@ -43,7 +43,7 @@
 					<img width="{{widget.width}}" ng-src="{{widget.url}}"/>
 				</div>
 				<div ng-switch-when="YOUTUBE">
-					<iframe width="{{widget.width}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
+					<iframe width="{{widget.width}}" height="{{widget.height}}" ng-src="{{model.getSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
 				</div>
 				<div ng-switch-default>
 					Unable to render widget

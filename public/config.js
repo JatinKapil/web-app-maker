@@ -58,8 +58,24 @@
 			controller: "WidgetListController",
 			controllerAs: "model"
 		})
+		.when("/user/:userId/website/:websiteId/page/:pageId/widget/new",{
+			templateUrl: "views/widget/widget-chooser.view.client.html",
+			controller: "NewWidgetController",
+			controllerAs: "model"
+		})
+		.when("/user/:userId/website/:websiteId/page/:pageId/widget/heading",{
+			templateUrl: "views/widget/widget-heading.view.client.html",
+			controller: "EditWidgetController",
+			controllerAs: "model"
+		})
+		.when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId",{
+			templateUrl: "views/widget/widget-edit.view.client.html",
+			controller: "EditWidgetController",
+			controllerAs: "model"
+		})
 		.otherwise({
 			redirectTo: "/login"
 		});
+		
 	}
 })();
