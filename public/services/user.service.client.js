@@ -15,14 +15,13 @@
 		
 		function createUser(username, password) {
 			var newUser =  {
-					_id: (new Date()).getTime()+"",
 					username : username,
 					password : password,
 					firstName : "",
 					lastName : ""
 			}
-			users.push(newUser);
-			return newUser;
+			return $http.post("/api/user", newUser);
+				
 		}
 		
 		function deleteUser() {
@@ -34,12 +33,8 @@
 			return $http.get(url);
 		}
 		function findUserById(id) {
-			for(var i in users){
-				if(users[i]._id===id){
-					return users[i];
-				}
-			}
-			return null;
+			var url = "/api/user/"+id;
+			return $http.get(url);
 		}
 		function updateUser(id, newUser) {
 			for(var i in users){

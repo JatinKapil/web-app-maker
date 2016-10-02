@@ -7,8 +7,17 @@ module.exports = function(app){
 		   		{_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
 		   	];
 	
+	app.post("/api/user", createUser);
 	app.get("/api/user" , getUsers);
 	app.get("/api/user/:userId" , findUserById);
+	
+	function createUser(req,res) {
+		var newUser = req.body;
+		newUser._id = (new Date()).getTime()+"",
+		users.push(newUser);
+		console.log(users);
+		res.send(newUser);
+	}
 	
 	function getUsers(req,res) {
 		var username = req.query['username'];
