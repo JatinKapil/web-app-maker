@@ -8,6 +8,7 @@ module.exports = function(app){
 		   	];
 	
 	app.post("/api/user", createUser);
+	app.put("/api/user/:userId" , updateUser);
 	app.get("/api/user" , getUsers);
 	app.get("/api/user/:userId" , findUserById);
 	
@@ -17,6 +18,19 @@ module.exports = function(app){
 		users.push(newUser);
 		console.log(users);
 		res.send(newUser);
+	}
+	
+    function updateUser(req,res) {
+		var id = req.params.userId;
+		var newUser = req.body;
+    	for(var i in users){
+			if(users[i]._id===id){
+				users[i].firstName = newUser.firstName;		
+				users[i].lastName = newUser.lastName;
+				res.sendStatus(200);
+			}
+		}
+    	res.sendStatus(400);
 	}
 	
 	function getUsers(req,res) {
