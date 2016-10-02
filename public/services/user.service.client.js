@@ -24,8 +24,9 @@
 				
 		}
 		
-		function deleteUser() {
-			
+		function deleteUser(id) {
+			var url = "/api/user/"+id;
+			return $http.delete(url);
 		}
 		
 		function findUserByUsernameAndPassword(username, password) {
